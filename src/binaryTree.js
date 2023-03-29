@@ -1,5 +1,3 @@
-import { mergeSort, prettyPrint } from "./utility";
-
 class Node{
     value = 0;
     nextLeft = null;
@@ -10,7 +8,7 @@ class Node{
     }
 }
 
-class Tree{
+export default class Tree{
     root = null;
 
     buildTree(arr) {
