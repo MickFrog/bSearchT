@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+}
+
+body {
+    margin: 0px;
+}
+
+fieldset {
+    min-width: 600px;
+}
+
+.container {
+    margin-left: 2rem;
+}
+
+.heading {
+    margin-left: 4rem;
+}
+
+.formContainer {
+    display: flex;
+}
+
+.rightDiv {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr; 
+    margin-left: 0.5rem;
+}
