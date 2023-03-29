@@ -60,4 +60,48 @@ class Tree{
 
         return this.findKey(valKey, rootNode.nextRight);
     }
+
+    #minValue(myRoot) {
+        let minv = myRoot.value;
+        while (myRoot.nextLeft != null)
+        {
+            minv = myRoot.nextLeft.value;
+            myRoot = myRoot.nextLeft;
+        }
+        return minv;
+    }
+
+    deleteKey(delKey, rootNode=this.root) {
+        //base case - tree empty
+        if (rootNode == null) return rootNode;
+
+        //otherwise traverse down the tree
+        if (delKey < rootNode.value) {
+            rootNode.nextLeft = this.deleteKey(delKey, rootNode.nextLeft);
+            return rootNode;
+        }
+
+        if (delKey > rootNode.value) {
+            rootNode.nextRight = this.deleteKey(delKey, rootNode.nextRight);
+            return rootNode;
+        }
+
+        // node to be deleted operation
+        if (rootNode.nextLeft == null) { //only right child
+            rootNode = rootNode.nextRight;
+            return rootNode;
+        }
+
+        if (rootNode.nextRight == null) { // only left child
+            rootNode = rootNode.nextLeft;
+            return rootNode;
+        } 
+        // find in-order successor
+        // make it the node-to-be-deleted's value, then continue operation with right sub-tree 
+        // to remove the duplicate in-order successor where it was gotten from.
+        rootNode.value = this.#minValue(rootNode.nextRight)
+
+        rootNode.nextRight = this.deleteKey(rootNode.value, rootNode.nextRight);
+        return rootNode; 
+    }
 }
