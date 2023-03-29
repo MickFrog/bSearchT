@@ -11,10 +11,24 @@ fieldset {
     background-color: black;
 }
 
+input {
+    width: 350px;
+    font-size: 1rem ;
+}
+
+button {
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+label {
+    margin-top: 1rem;
+}
+
 .container {
     min-height: 100vh;
     background-color: #2F2F2F;
-    color: #F6F930;
+    color: white;
 
     padding-left: 2rem;
     font-family: 'Fira Code', monospace, serif;
@@ -23,11 +37,12 @@ fieldset {
 
 .heading {
     margin-left: 4rem;
+    color: #F6F930;
 }
 
 .formContainer {
     display: grid;
-    grid-template: 1fr 1fr / 1fr 1fr;
+    grid-template: 1fr 1fr / 600px 1fr;
     gap: 0.5rem;
 
     width: fit-content;
@@ -35,4 +50,16 @@ fieldset {
 
 .myInput {
     grid-row: 1 / 3;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.inputSmallDiv {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#balanceBtn {
+    width: 400px;
 }
