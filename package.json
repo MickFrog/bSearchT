@@ -1,0 +1,28 @@
+{
+  "name": "bsearcht",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MickFrog/bSearchT.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MickFrog/bSearchT/issues"
+  },
+  "homepage": "https://github.com/MickFrog/bSearchT#readme",
+  "dependencies": {
+    "webpack": "^5.77.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.3",
+    "style-loader": "^3.3.2"
+  }
+}
