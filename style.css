@@ -1,18 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+
 *{
     box-sizing: border-box;
     margin: 0px;
 }
 
-body {
-    margin: 0px;
-}
-
 fieldset {
-    min-width: 600px;
+    width: 600px;
+    border-color: #D2F898;
+    background-color: black;
 }
 
 .container {
-    margin-left: 2rem;
+    min-height: 100vh;
+    background-color: #2F2F2F;
+    color: #F6F930;
+
+    padding-left: 2rem;
+    font-family: 'Fira Code', monospace, serif;
+    font-size: 1.2rem;
 }
 
 .heading {
@@ -20,11 +26,13 @@ fieldset {
 }
 
 .formContainer {
-    display: flex;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr;
+    gap: 0.5rem;
+
+    width: fit-content;
 }
 
-.rightDiv {
-    display: grid;
-    grid-template: 1fr 1fr / 1fr; 
-    margin-left: 0.5rem;
+.myInput {
+    grid-row: 1 / 3;
 }
