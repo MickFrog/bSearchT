@@ -158,4 +158,49 @@ class Tree{
 
         return [...tempRight, ...tempLeft, ...finalArr];
     }
+
+    //Height and Depth
+    findHeight(rootNode=this.root) {
+        // not 0 because it is a valid height
+        if (rootNode == null) return -1;
+
+        let leftfHeight = this.findHeight(rootNode.nextLeft);
+        let rightHeight = this.findHeight(rootNode.nextRight);
+
+        // 1 for the edge from root to its children
+        return Math.max(leftfHeight, rightHeight) + 1;
+    }
+
+    findDepth(valKey, rootNode=this.root) {
+        if (rootNode == null) return;
+        if (rootNode.value == valKey) return 0;
+
+        if (valKey < rootNode.value) {
+            return this.findDepth(valKey, rootNode.nextLeft) + 1;
+        }
+        if (valKey > rootNode.value) {
+            return this.findDepth(valKey, rootNode.nextRight) + 1;
+        }
+    }
+
+    isBalanced() { //compare heights of two sub trees of root Node
+        const myRoot = this.root;
+
+        let leftfHeight = this.findHeight(myRoot.nextLeft);
+        let rightHeight = this.findHeight(myRoot.nextRight);
+
+        return Math.abs(leftfHeight - rightHeight) <= 1;
+    }
+
+    rebalance() {
+        if (this.isBalanced()) return null; // prevent operation on balanced tree
+        //treverse the tree and get its in-order array
+        let newArr = this.inOrder();
+
+        //build new Tree
+        const newRoot = this.buildTree(newArr);
+
+        //set old tree to new tree
+        this.root = newRoot;
+    }
 }
