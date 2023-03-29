@@ -104,4 +104,58 @@ class Tree{
         rootNode.nextRight = this.deleteKey(rootNode.value, rootNode.nextRight);
         return rootNode; 
     }
+
+    // Breadth-First-Search
+    levelOrder(rootNode=this.root) {
+        if (rootNode == null) return;
+
+        let myQueue = [];            //working queue
+        myQueue.push(rootNode);
+
+        while(myQueue.length) {
+            let currNode = myQueue[0];
+            console.log(currNode.value)
+
+            //enqueue currNode children
+            if (currNode.nextLeft != null) myQueue.push(currNode.nextLeft);
+            if (currNode.nextRight != null) myQueue.push(currNode.nextRight);
+
+            //dequeue curr Node
+            myQueue.shift();
+        }
+    }
+
+    // Depth-First-Search operations
+    inOrder(rootNode=this.root) {
+        if (rootNode == null) return [];
+
+        let finalArr = [];
+        const tempLeft = this.inOrder(rootNode.nextLeft);
+        finalArr.push(rootNode.value);
+        const tempRight = this.inOrder(rootNode.nextRight);
+
+        return [...tempLeft, ...finalArr, ...tempRight];
+    }
+
+    preOrder(rootNode=this.root) {
+        if (rootNode == null) return [];
+
+        let finalArr = [];
+        finalArr.push(rootNode.value);
+        const tempLeft = this.preOrder(rootNode.nextLeft);
+        const tempRight = this.preOrder(rootNode.nextRight);
+
+        return [...finalArr, ...tempLeft, ...tempRight];
+    }
+
+    postOrder(rootNode=this.root) {
+        if (rootNode == null) return [];
+
+        let finalArr = [];
+        const tempRight = this.postOrder(rootNode.nextRight);
+        const tempLeft = this.postOrder(rootNode.nextLeft);
+        finalArr.push(rootNode.value);
+
+        return [...tempRight, ...tempLeft, ...finalArr];
+    }
 }
