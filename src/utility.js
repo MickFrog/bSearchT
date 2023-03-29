@@ -43,3 +43,23 @@ export const prettyPrint = (node, prefix = '', isLeft = true) => {
         prettyPrint(node.nextLeft, `${prefix}${isLeft ? '    ' : '│   '}`, true);
     }
 }
+
+export function filterElements(myArr) {
+    let filteredArray = [];
+    let currNum = '';
+
+    for (let i = 0; i < myArr.length; i++) {
+        currNum = parseInt(myArr[i]);
+
+        //non-numbers
+        if (isNaN(currNum)) continue;
+
+        //numbers greater than 100
+        if (currNum > 99) continue;
+
+        //add valid number
+        filteredArray.push(currNum);
+    }
+
+    return filteredArray;
+}
