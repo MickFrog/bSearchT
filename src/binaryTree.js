@@ -191,7 +191,6 @@ export default class Tree{
     }
 
     rebalance() {
-        if (this.isBalanced()) return null; // prevent operation on balanced tree
         //treverse the tree and get its in-order array
         let newArr = this.inOrder();
 

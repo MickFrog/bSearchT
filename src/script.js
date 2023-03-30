@@ -15,6 +15,11 @@ const insertElemBtn = document.getElementById('addElementBtn');
 const deleteElemInput = document.getElementById('deleteNum');
 const deleteBtn = document.getElementById('deleteBtn');
 
+const findElemInput = document.getElementById('findNum');
+const findBtn = document.getElementById('findBtn');
+
+const balanceBtn = document.getElementById('balanceBtn');
+
 //Event listeners
 newElementsBtn.addEventListener('click', () => {
     //prepareArray
@@ -36,4 +41,18 @@ insertElemBtn.addEventListener('click', () => {
 deleteBtn.addEventListener('click', () => {
     currentTree.deleteKey(deleteElemInput.value);
     prettyPrint(currentTree.root);
+});
+
+findBtn.addEventListener('click', () => {
+    const foundKey = currentTree.findKey(findElemInput.value);
+
+    if (foundKey != null)
+        console.log(currentTree.findDepth(findElemInput.value));
+});
+
+balanceBtn.addEventListener('click', () => {
+    if (!currentTree.isBalanced()) { //prevent balancing already balanced tree
+        currentTree.rebalance();
+        prettyPrint(currentTree.root);
+    }
 });
