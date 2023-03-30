@@ -1,5 +1,5 @@
 //Merge sort
-export function mergeSort(arr) {
+function mergeSort(arr) {
     if (arr.length < 2) {
         return arr;
     }
@@ -44,7 +44,7 @@ export const prettyPrint = (node, prefix = '', isLeft = true) => {
     }
 }
 
-export function filterElements(myArr) {
+function filterElements(myArr) {
     let filteredArray = [];
     let currNum = '';
 
@@ -62,4 +62,15 @@ export function filterElements(myArr) {
     }
 
     return filteredArray;
+}
+
+export function prepareArray(rawInput) {
+    //split elements
+    rawInput = rawInput.split(' ');
+
+    //filter array for binary tree
+    const treeArray = filterElements(rawInput);
+
+    //sort array
+    return mergeSort(treeArray);
 }
