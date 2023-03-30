@@ -23,16 +23,16 @@
                         <button id="newElementsBtn">Create Tree</button>
                     </div>
                     
-                    <label for="newNum">Insert new elements (Duplicates are ignored)</label>
+                    <label for="newNum">Insert new elements (Less than 100)</label>
                     <div class="inputSmallDiv">
-                        <input type="number" id="newNum" max="100">
-                        <button>Add element</button>
+                        <input type="number" id="newNum" max="100" placeholder="0-99">
+                        <button id="addElementBtn">Add element</button>
                     </div>
 
                     <label for="deleteNum">Delete an element</label>
                     <div class="inputSmallDiv">
-                        <input type="number" id="deleteNum" max="100">
-                        <button>Delete element</button>
+                        <input type="number" id="deleteNum">
+                        <button id="deleteBtn">Delete element</button>
                     </div>
 
                     <label for="findNum">Find and view depth of element</label>
@@ -49,7 +49,7 @@
                     <legend>Tree Output</legend>
 
                     <div id="treeOut">
-                        
+
                     </div>
                 </fieldset>
 
