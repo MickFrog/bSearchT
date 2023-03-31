@@ -17,6 +17,7 @@ const deleteBtn = document.getElementById('deleteBtn');
 
 const findElemInput = document.getElementById('findNum');
 const findBtn = document.getElementById('findBtn');
+const depthDisplay = document.getElementById('depthDisplay')
 
 const balanceBtn = document.getElementById('balanceBtn');
 
@@ -51,8 +52,11 @@ deleteBtn.addEventListener('click', () => {
 findBtn.addEventListener('click', () => {
     const foundKey = currentTree.findKey(findElemInput.value);
 
-    if (foundKey != null)
-        console.log(currentTree.findDepth(findElemInput.value));
+    if (foundKey != null) {
+        depthDisplay.textContent = 'Depth of ' + findElemInput.value + ': ' + currentTree.findDepth(findElemInput.value);
+        return;
+    }
+    depthDisplay.textContent = 'Number not in tree';
 });
 
 balanceBtn.addEventListener('click', () => {
