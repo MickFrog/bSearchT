@@ -31,7 +31,7 @@ function mergeSort(arr) {
 }
 
 //prettyPrint
-export const prettyPrint = (node, prefix = '', isLeft = true, myArr=[]) => {
+const prettyPrint = (node, prefix = '', isLeft = true, myArr=[]) => {
     if (node === null) {
         return myArr;
     }
@@ -67,7 +67,7 @@ function filterElements(myArr) {
     return filteredArray;
 }
 
-export function printToOutput(rootNode, myDiv) {
+export function printTree(rootNode, myDiv) {
     //get output Array
     const outputArray = prettyPrint(rootNode);
 

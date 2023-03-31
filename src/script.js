@@ -1,5 +1,5 @@
 import "./style.css";
-import { prepareArray, printToOutput } from "./utility";
+import { prepareArray, printTree } from "./utility";
 import Tree from "./binaryTree";
 
 //Globals
@@ -23,6 +23,8 @@ const balanceBtn = document.getElementById('balanceBtn');
 
 const treeOutputDiv = document.getElementById('treeOut');
 
+const treeStats = document.getElementById('stats');
+
 //Event listeners
 newElementsBtn.addEventListener('click', () => {
     //prepareArray
@@ -33,20 +35,22 @@ newElementsBtn.addEventListener('click', () => {
     currentTree.root = currentTree.buildTree(readyArray);
 
     //output tree
-    printToOutput(currentTree.root, treeOutputDiv);
-
+    printTree(currentTree.root, treeOutputDiv);
+    updateStats();
 });
 
 insertElemBtn.addEventListener('click', () => {
     if (insertElemInput.value > 99) return; 
 
     currentTree.insertKey(insertElemInput.value);
-    printToOutput(currentTree.root, treeOutputDiv);
+    printTree(currentTree.root, treeOutputDiv);
+    updateStats();
 });
 
 deleteBtn.addEventListener('click', () => {
     currentTree.deleteKey(deleteElemInput.value);
-    printToOutput(currentTree.root, treeOutputDiv);
+    printTree(currentTree.root, treeOutputDiv);
+    updateStats();
 });
 
 findBtn.addEventListener('click', () => {
@@ -62,6 +66,44 @@ findBtn.addEventListener('click', () => {
 balanceBtn.addEventListener('click', () => {
     if (!currentTree.isBalanced()) { //prevent balancing already balanced tree
         currentTree.rebalance();
-        printToOutput(currentTree.root, treeOutputDiv);
+        printTree(currentTree.root, treeOutputDiv);
+        updateStats();
     }
 });
+
+//functions
+function updateStats() {
+    //Clear Stats div
+    while (treeStats.firstChild) {
+        treeStats.removeChild(treeStats.firstChild);
+    }
+
+    //update height
+    treeStats.appendChild(createPara("Height", currentTree.findHeight()));
+
+    // update balance
+    treeStats.appendChild(createPara("Balanced", currentTree.isBalanced()));
+
+    //Level Order
+    const levelOrderArray = currentTree.levelOrder();
+    treeStats.appendChild(createPara("Level Order", levelOrderArray.toString()));
+
+    //Pre-order
+    const preOrderArray = currentTree.preOrder();
+    treeStats.appendChild(createPara("Pre-order", preOrderArray.toString()));
+
+    //In-order
+    const inOrderArray = currentTree.inOrder();
+    treeStats.appendChild(createPara("In-order", inOrderArray.toString()));
+
+    //Post-order
+    const postArray = currentTree.postOrder();
+    treeStats.appendChild(createPara("Post-order", postArray.toString()));
+}
+
+function createPara(myField, myValue) {
+    let newPara = document.createElement('p');
+
+    newPara.innerHTML = myField + ': &nbsp;&nbsp;' + myValue;
+    return newPara;
+}

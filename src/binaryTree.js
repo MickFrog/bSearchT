@@ -110,9 +110,12 @@ export default class Tree{
         let myQueue = [];            //working queue
         myQueue.push(rootNode);
 
+        let finalArray = [];
+
         while(myQueue.length) {
-            let currNode = myQueue[0];
-            console.log(currNode.value)
+            let currNode = myQueue[0]; //load next element
+            //process currNode
+            finalArray.push(currNode.value); 
 
             //enqueue currNode children
             if (currNode.nextLeft != null) myQueue.push(currNode.nextLeft);
@@ -121,6 +124,7 @@ export default class Tree{
             //dequeue curr Node
             myQueue.shift();
         }
+        return finalArray;
     }
 
     // Depth-First-Search operations
