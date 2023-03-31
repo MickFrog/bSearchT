@@ -1,28 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
+:root {
+    --myFontSize: 1rem;
+}
+
 *{
     box-sizing: border-box;
     margin: 0px;
 }
 
 fieldset {
-    width: 600px;
+    width: 550px;
     border-color: #D2F898;
     background-color: black;
 }
 
 input {
     width: 350px;
-    font-size: 1rem ;
+    font-size: var(--myFontSize) ;
 }
 
 button {
     font-family: inherit;
-    font-size: 1rem;
+    font-size: var(--myFontSize);
 }
 
 label {
-    margin-top: 1rem;
+    margin-top: var(--myFontSize);
 }
 
 .container {
@@ -32,7 +36,6 @@ label {
 
     padding-left: 2rem;
     font-family: 'Fira Code', monospace, serif;
-    font-size: 1.2rem;
 }
 
 .heading {
@@ -42,7 +45,7 @@ label {
 
 .formContainer {
     display: grid;
-    grid-template: 1fr 1fr / 600px 1fr;
+    grid-template: 1fr max-content / max-content 1fr;
     gap: 0.5rem;
 
     width: fit-content;
@@ -62,8 +65,4 @@ label {
 
 #balanceBtn {
     width: 400px;
-}
-
-.myOutput {
-    font-size: 1rem;
 }
