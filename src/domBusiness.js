@@ -37,6 +37,7 @@ newElementsBtn.addEventListener('click', () => {
     //output tree
     printTree(currentTree.root, treeOutputDiv);
     updateStats();
+    newElementsInput.value = '';
 });
 
 insertElemBtn.addEventListener('click', () => {
@@ -45,12 +46,14 @@ insertElemBtn.addEventListener('click', () => {
     currentTree.insertKey(insertElemInput.value);
     printTree(currentTree.root, treeOutputDiv);
     updateStats();
+    insertElemInput.value = ''
 });
 
 deleteBtn.addEventListener('click', () => {
     currentTree.deleteKey(deleteElemInput.value);
     printTree(currentTree.root, treeOutputDiv);
     updateStats();
+    deleteElemInput.value = '';
 });
 
 findBtn.addEventListener('click', () => {
@@ -58,9 +61,11 @@ findBtn.addEventListener('click', () => {
 
     if (foundKey != null) {
         depthDisplay.textContent = 'Depth of ' + findElemInput.value + ': ' + currentTree.findDepth(findElemInput.value);
+        findElemInput.value = '';
         return;
     }
     depthDisplay.textContent = 'Number not in tree';
+    findElemInput.value = '';
 });
 
 balanceBtn.addEventListener('click', () => {
