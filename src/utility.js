@@ -31,17 +31,20 @@ function mergeSort(arr) {
 }
 
 //prettyPrint
-export const prettyPrint = (node, prefix = '', isLeft = true) => {
+export const prettyPrint = (node, prefix = '', isLeft = true, myArr=[]) => {
     if (node === null) {
-        return;
+        return myArr;
     }
+
     if (node.nextRight !== null) {
-        prettyPrint(node.nextRight, `${prefix}${isLeft ? '│   ' : '    '}`, false);
+        prettyPrint(node.nextRight, `${prefix}${isLeft ? '│&nbsp;&nbsp;&nbsp;' : '&nbsp;&nbsp;&nbsp;&nbsp;'}`, false, myArr);
     }
-    console.log(`${prefix}${isLeft ? '└── ' : '┌── '}${node.value}`);
+    myArr.push(`${prefix}${isLeft ? '└──&nbsp;' : '┌──&nbsp;'}${node.value}`);
     if (node.nextLeft !== null) {
-        prettyPrint(node.nextLeft, `${prefix}${isLeft ? '    ' : '│   '}`, true);
+        prettyPrint(node.nextLeft, `${prefix}${isLeft ? '&nbsp;&nbsp;&nbsp;&nbsp;' : '│&nbsp;&nbsp;&nbsp;'}`, true, myArr);
     }
+
+    return myArr;
 }
 
 function filterElements(myArr) {
@@ -63,6 +66,27 @@ function filterElements(myArr) {
 
     return filteredArray;
 }
+
+export function printToOutput(rootNode, myDiv) {
+    //get output Array
+    const outputArray = prettyPrint(rootNode);
+
+    //clear output
+    while (myDiv.firstChild) {
+        myDiv.removeChild(myDiv.firstChild);
+    }
+
+    for (let i = 0; i < outputArray.length; i++) {
+        // create a div element
+        let textDiv = document.createElement('div');
+    
+        // add the text to created div
+        textDiv.innerHTML = outputArray[i];
+    
+        //append to parent div
+        myDiv.appendChild(textDiv);
+    }
+} 
 
 export function prepareArray(rawInput) {
     //split elements

@@ -63,3 +63,7 @@ label {
 #balanceBtn {
     width: 400px;
 }
+
+.myOutput {
+    font-size: 1rem;
+}

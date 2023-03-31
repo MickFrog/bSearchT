@@ -1,5 +1,5 @@
 import "./style.css";
-import { prettyPrint, prepareArray } from "./utility";
+import { prepareArray, printToOutput } from "./utility";
 import Tree from "./binaryTree";
 
 //Globals
@@ -20,6 +20,8 @@ const findBtn = document.getElementById('findBtn');
 
 const balanceBtn = document.getElementById('balanceBtn');
 
+const treeOutputDiv = document.getElementById('treeOut');
+
 //Event listeners
 newElementsBtn.addEventListener('click', () => {
     //prepareArray
@@ -28,19 +30,22 @@ newElementsBtn.addEventListener('click', () => {
     //create tree
     currentTree = new Tree();
     currentTree.root = currentTree.buildTree(readyArray);
-    prettyPrint(currentTree.root);
+
+    //output tree
+    printToOutput(currentTree.root, treeOutputDiv);
+
 });
 
 insertElemBtn.addEventListener('click', () => {
     if (insertElemInput.value > 99) return; 
 
     currentTree.insertKey(insertElemInput.value);
-    prettyPrint(currentTree.root);
+    printToOutput(currentTree.root, treeOutputDiv);
 });
 
 deleteBtn.addEventListener('click', () => {
     currentTree.deleteKey(deleteElemInput.value);
-    prettyPrint(currentTree.root);
+    printToOutput(currentTree.root, treeOutputDiv);
 });
 
 findBtn.addEventListener('click', () => {
@@ -53,6 +58,6 @@ findBtn.addEventListener('click', () => {
 balanceBtn.addEventListener('click', () => {
     if (!currentTree.isBalanced()) { //prevent balancing already balanced tree
         currentTree.rebalance();
-        prettyPrint(currentTree.root);
+        printToOutput(currentTree.root, treeOutputDiv);
     }
 });
